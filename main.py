@@ -62,6 +62,14 @@ class TArray(AbstractArray):
     def __mul__(self, other: int) -> None:
         self._massive = [x * other for x in self._massive]
 
+    def __call__(self, *args, **kwargs):
+        
+        if args:
+            if len(args) == 1 and isinstance(args[0], list):
+                self.cinArray(args[0])
+        else:
+            return self.get_massive()
+
 class MultiArray:
     def __init__(self, arrays: List[TArray]):
         self.arrays = arrays
