@@ -26,6 +26,10 @@ class AbstractArray(ABC):
     def cinArray(self, values: List[int]) -> None:
         pass
     
+    @abstractmethod
+    def __call__(self, *args, **kwargs):
+        pass
+    
     def get_massive(self) -> List[int]:
         return self._massive
 
@@ -34,6 +38,9 @@ class AbstractArray(ABC):
             self._massive = values
         else:
             raise ValueError(f"Количество элементов ({len(values)}) не соответствует текущей длине массива ({self._length})")
+    
+    
+
 
 class TArray(AbstractArray):
     def __init__(self, length: int = 0):
